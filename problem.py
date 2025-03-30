@@ -13,33 +13,37 @@ def cli():
 
 
 
-def calc(num1, num2, op):
+def calc(num1, num2, op, neg):
+    result = 0
     if op == "add":
-        click.echo(num1 + num2)
+        result = (num1 + num2)
     elif op == "sub":
-        click.echo(num1 - num2)
+        result = (num1 - num2)
     elif op == "mul":
-        click.echo(num1 * num2)
+        result = (num1 * num2)
     elif op == "div":
-        click.echo(num1 / num2)
+        result = (num1 / num2)
     elif op == "mod":
-        click.echo(num1 % num2)
+        result = (num1 % num2)
     elif op == "floor":
-        click.echo(num1 // num2)
+        result = (num1 // num2)
     elif op == "exp":
-        click.echo(num1 ** num2)
+        result = (num1 ** num2)
     elif op == "log":
-        click.echo(math.log(num1, num2))
+        result = (math.log(num1, num2))
     else:
-        click.echo("invalid operation")
+        result = ("invalid operation")
+    
+    if neg:
+        result = -result
 
 if __name__ == '__main__':
     cli()
 """
 try testing if these work
 python3 problem.py calc --op mult 6 3
-python3 problem.py calc --op=sub 2048 512
-python3 problem.py calc --op = log 19683 3
+python3 problem.py calc --op=sub -n 2048 512 
+python3 problem.py calc --op=log 19683 3 --neg
 python3 problem.py calc 3 9 --op exp
 
 as you can see, where the option goes doesn't really matter, but the order of the arguments do matter
